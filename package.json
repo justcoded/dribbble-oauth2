@@ -1,0 +1,22 @@
+{
+  "name": "dribbble-oauth2",
+  "version": "1.0.0",
+  "description": "dribble-oauth2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justcoded/dribble-oauth2.git"
+  },
+  "author": "justcoded",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justcoded/dribble-oauth2/issues"
+  },
+  "homepage": "https://github.com/justcoded/dribble-oauth2#readme",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
