@@ -1,8 +1,8 @@
-# Dribble API
+# Dribble-OAUTH2
 
 Lib to easy access and use dribbble oauth2 api.
 
-## Getting Started
+# Getting Started
 
 ``` js
 const settings = {
@@ -40,21 +40,21 @@ const dribble = DribbleOauth()();
 dribble.setAccessToken(ACCESS_TOKEN)
 ```
 
-## API
+# API
 
-#### Shots 
-###### Get all shots
+## Shots 
+### Get all shots
 ```js 
 dribble.api.shot.getAll()
 ```
-###### Get shot by id 
+### Get shot by id 
 **Name**|**Type**|**Description**
 :-----:|:-----:|:-----:
 id|number|Shot id
 ```js 
 dribble.api.shot.get(id)   
 ```
-###### Create a shot
+### Create a shot
 **Name**|**Type**|**Description**
 :-----:|:-----:|:-----:
 image|file|Required. The image file.It must be exactly 400x300 or 800x600, no larger than eight megabytes, and be a GIF, JPG, or PNG.
@@ -67,7 +67,7 @@ The authenticated user must either be a member of the team or be authenticated a
 ```js 
 dribble.api.shot.create(settings)
 ```
-###### Update a shot
+### Update a shot
 **Name**|**Type**|**Description**
 :-----:|:-----:|:-----:
 id|number|Shot Id
@@ -81,7 +81,7 @@ title|string|The title of the shot.
 dribble.api.shot.getAll(id, settings)
 ```
 
-###### Delete shot by id 
+### Delete shot by id 
 **Name**|**Type**|**Description**
 :-----:|:-----:|:-----:
 id|number|Shot id
@@ -89,21 +89,21 @@ id|number|Shot id
 dribble.api.shot.delete(id)   
 ```
 
-#### User  
+## User  
 
-###### Get the authenticated user
+### Get the authenticated user
 ```js 
 dribble.api.user.get()   
 ```
 
-### Projects
+## Projects
 
-###### List projects
+### List projects
 ```js 
 dribble.api.project.getAll()   
 ```
 
-###### Create a project
+### Create a project
 **Name**|**Type**|**Description**
 :-----:|:-----:|:-----:
 name|string|Required The name of the project.
@@ -112,7 +112,7 @@ description|string|The project description.
 dribble.api.project.create(settings)   
 ```
 
-###### Update a project
+### Update a project
 **Name**|**Type**|**Description**
 :-----:|:-----:|:-----:
 id|number|Project id
@@ -122,7 +122,7 @@ description|string|The project description
 dribble.api.project.create(id, settings)   
 ```
 
-###### Delete a project
+### Delete a project
 **Name**|**Type**|**Description**
 :-----:|:-----:|:-----:
 id|number|Project id
@@ -130,9 +130,9 @@ id|number|Project id
 dribble.api.user.delete(id)   
 ```
 
-### Attachments
+## Attachments
 
-###### Create an attachment
+### Create an attachment
 **Name**|**Type**|**Description**
 :-----:|:-----:|:-----:
 file|file|Required. The attachment file. It must be no larger than 10 megabytes.
@@ -140,7 +140,7 @@ file|file|Required. The attachment file. It must be no larger than 10 megabytes.
 dribble.api.attachment.create(shotId, settings)   
 ```
 
-###### Create an attachment
+### Create an attachment
 ```js 
 dribble.api.attachment.delete(shotId, attachmentId)   
 ```
