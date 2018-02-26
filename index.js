@@ -6,7 +6,7 @@ let dribbleInstance;
 const apiFactory = require('./api/index');
 
 module.exports = (settings) => {
-  if (!dribbleInstance && settings) {
+  if (!dribbleInstance) {
     dribbleInstance = new Dribble(settings);
     return dribbleInstance
   } else {
@@ -16,21 +16,25 @@ module.exports = (settings) => {
 
 class Dribble {
   constructor(settings) {
+    this._api = null;
+    if (settings && typeof settings === 'object') {
+      this.setSettings(settings);
+    }
+  }
+
+  setSettings(settings) {
     if (!settings || typeof settings !== 'object') {
       throw new Error('miss settings or settings must be an object');
     }
 
-    if (settings['client_id'] && settings['client_secret']) {
-      this.clientId = settings['client_id'];
-      this.clientSecret = settings['client_secret']; // return instance
-    } else if (settings['access_token']) {
-      this.accessToken = settings['access_token']
-    }
-
-    this._api = null;
+    this.clientId = settings['client_id'];
+    this.clientSecret = settings['client_secret'];
   }
 
   authorize(redirectUrl, scope = 'public') {
+    if (!this.clientId || !this.clientSecret) {
+      throw new Error('Please init settings first');
+    }
     if (!redirectUrl || typeof redirectUrl !== 'string') {
       throw new Error('Redirect Url not found or invalid Redirect Url');
     } else if (!this.clientId) {
@@ -41,6 +45,10 @@ class Dribble {
   }
 
   async getAccessToken(code) {
+    if (!this.clientId || !this.clientSecret) {
+      throw new Error('Please init settings first');
+    }
+
     if (!code || typeof code !== 'string') {
       throw new Error('code not found or invalid code');
     }

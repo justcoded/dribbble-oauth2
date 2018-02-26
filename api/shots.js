@@ -2,11 +2,11 @@ const AbstractApi = require('./abstract');
 
 module.exports = class ShotsApi extends AbstractApi {
   getAll() {
-    return this.request('get', `user/shots`); // tested
+    return this.request('get', `user/shots`);
   }
 
   get(id) {
-    return this.request('get', `shots/${id}`); // tested
+    return this.request('get', `shots/${id}`);
   }
 
   create(settings) {
