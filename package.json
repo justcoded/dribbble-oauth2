@@ -10,8 +10,15 @@
     "type": "git",
     "url": "git+https://github.com/justcoded/dribble-oauth2.git"
   },
+  "keywords": [
+    "dribbble",
+    "oauth2",
+    "dribbble oauth2",
+    "JustCoded",
+    "jc"
+  ],
   "author": "justcoded",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/justcoded/dribble-oauth2/issues"
   },
