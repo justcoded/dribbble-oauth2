@@ -17,7 +17,7 @@
     "JustCoded",
     "jc"
   ],
-  "author": "justcoded",
+  "author": "justcoded <hello@justcoded.com> (https://justcoded.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/justcoded/dribble-oauth2/issues"
