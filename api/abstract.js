@@ -4,6 +4,12 @@ const API_BASE = 'https://api.dribbble.com/v2';
 module.exports = class AbstractApi {
   constructor(token) {
     this.accessToken = token;
+    this.methods = {
+      get: 'get',
+      post: 'post',
+      delete: 'delete',
+      put: 'put'
+    }
   }
 
   request(method, path, params) {
