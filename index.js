@@ -1,5 +1,5 @@
 const DOMAIN = 'https://dribbble.com';
-const TOKEN_URL = DOMAIN + '/oauth/token';
+const TOKEN_URL = `${DOMAIN}/oauth/token`;
 const request = require('./request');
 let dribbleInstance;
 
@@ -8,18 +8,15 @@ const apiFactory = require('./api/index');
 module.exports = (settings) => {
   if (!dribbleInstance) {
     dribbleInstance = new Dribble(settings);
-    return dribbleInstance
-  } else {
-    return dribbleInstance;
   }
+
+  return dribbleInstance
 };
 
 class Dribble {
   constructor(settings) {
     this._api = null;
-    if (settings && typeof settings === 'object') {
-      this.setSettings(settings);
-    }
+    this.setSettings(settings);
   }
 
   setSettings(settings) {
@@ -50,26 +47,22 @@ class Dribble {
     }
 
     if (!code || typeof code !== 'string') {
-      throw new Error('code not found or invalid code');
+      throw new Error('Code not found or invalid code');
     }
 
     this.code = code;
-    try {
-      const {data} = await request('post', TOKEN_URL, {
-        client_id: this.clientId,
-        client_secret: this.clientSecret,
-        code: code
-      });
+    const {data} = await request('post', TOKEN_URL, {
+      client_id: this.clientId,
+      client_secret: this.clientSecret,
+      code: code
+    });
 
-      this.setAccessToken(data.access_token);
-      this.tokenType = data.token_type;
-      this.scope = data.scope;
-      this.createdAt = data.created_at;
+    this.setAccessToken(data.access_token);
+    this.tokenType = data.token_type;
+    this.scope = data.scope;
+    this.createdAt = data.created_at;
 
-      return data
-    } catch (error) {
-      throw new Error(error)
-    }
+    return data
   }
 
   setAccessToken(accessToken) {
@@ -78,15 +71,7 @@ class Dribble {
     this._api = apiFactory(accessToken);
   }
 
-  sendRequest(method, incomeUrl, params) {
-    if (!params) {
-      params = {
-        access_token: this.accessToken
-      }
-    }
-    if (!params.access_token) {
-      params.access_token = this.accessToken;
-    }
+  sendRequest(method, incomeUrl, params = {access_token: this.accessToken}) {
     return request(method, incomeUrl, params)
   }
 
